@@ -1,0 +1,128 @@
+<!-- ✠ v4.0.0 -->
+
+
+
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="../Assets/Symbols/Symbol_1.png">
+
+    <title>1889 I.E.N.A SP Admin</title>
+
+    <link rel="stylesheet" href="Admin_Style.css">
+
+</head>
+
+
+
+
+<body>
+
+
+    <div class="Admin_Layout">
+
+
+        <header class="Admin_Header">
+
+            <button class="Back_Btn" onclick="location.href='../Web-Redirect/Redirect.html'">BACK</button>
+
+            <div class="Header_Center">
+                <h2 class="Page_Title">S PROTOCOL MY ADMIN</h2>
+                <span class="Admin_Count" id="Status_Display">STANDBY</span>
+            </div>
+
+            <img src="../Assets/Symbols/Symbol_1.png" alt="Logo" class="Admin_Logo">
+
+        </header>
+
+
+        <main class="Admin_Dossier">
+
+            <section class="Admin_Entry">
+
+
+                <div class="Entry_Label">USER MODERATION</div>
+
+
+                <div class="Entry_Control">
+
+                    <div class="Input_Block">
+                        <label class="Control_Label">TARGET USERNAME</label>
+                        <input type="text" id="Ban_Username" class="Admin_Input" spellcheck="false">
+                    </div>
+
+                    <div class="Action_Row">
+                        <button class="Control_Btn ban" onclick="Admin_Action('Ban')">BAN USER</button>
+                        <button class="Control_Btn unban" onclick="Admin_Action('UnBan')">UNBAN USER</button>
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <section class="Admin_Entry">
+
+                <div class="Entry_Label">SYSTEM CONTROL</div>
+
+
+                <div class="Entry_Control">
+
+
+                    <div class="Input_Block">
+                        <label class="Control_Label">TARGET CHANNEL / TARGET USER</label>
+                        <input type="text" id="Clear_Target" class="Admin_Input" spellcheck="false">
+                    </div>
+
+
+                    <div class="Input_Block">
+                        <label class="Control_Label">CHANNEL PASSWORD</label>
+                        <input type="password" id="Clear_Password" class="Admin_Input" spellcheck="false">
+                    </div>
+
+
+                    <div class="Action_Row">
+                        <button class="Control_Btn clear" onclick="Admin_Action('Clear')">CLEAR HISTORY</button>
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+        <footer class="Admin_Footer">
+            1889 I.E.N.A
+        </footer>
+
+
+    </div>
+
+
+    <script src="Admin_Script.js"></script>
+
+    
+</body>
+
+</html>

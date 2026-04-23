@@ -1,0 +1,806 @@
+/* ✠ v4.0.0 */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Primary_Dark: #0a0a0a;
+    --Accent_Color: #8b0000;
+    --Accent_Glow: rgba(139, 0, 0, 0.4);
+    --Accent_Dim: rgba(139, 0, 0, 0.12);
+    --Border_Gray: #1a1a1a;
+    --Border_Subtle: #121212;
+    --Text_White: #ffffff;
+    --Text_Gray: #a0a0a0;
+}
+
+
+
+
+Body {
+    background-color: var(--Primary_Dark);
+    color: var(--Text_White);
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+Body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top left, var(--Accent_Dim) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+.Chat_App_Wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    padding: 1.5rem;
+    display: flex;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+.Chat_Layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 1.5rem;
+}
+
+
+
+
+.Sidebar {
+    width: 280px;
+    background: #050505;
+    border: 1px solid var(--Border_Gray);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+
+
+
+.Sidebar_Header {
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 4px;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--Border_Subtle);
+}
+
+
+
+
+.Mini_Logo {
+    width: 30px;
+    filter: drop-shadow(0 0 10px var(--Accent_Glow));
+}
+
+
+
+
+.Channel_List {
+    flex: 1;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+}
+
+
+
+
+.Channel_Btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--Text_Gray);
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.72rem;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+
+
+
+.Channel_Btn:hover {
+    color: var(--Text_White);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+
+
+
+.Channel_Btn.active {
+    color: var(--Accent_Color);
+    background: rgba(139, 0, 0, 0.08);
+    border-color: var(--Accent_Color);
+    box-shadow: inset 0 0 15px rgba(139, 0, 0, 0.08);
+}
+
+
+
+
+.Separator {
+    height: 1px;
+    background: var(--Border_Subtle);
+    margin: 0.8rem 0;
+}
+
+
+
+
+.Sidebar_Footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--Border_Subtle);
+}
+
+
+
+
+.Return_Btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--Accent_Color);
+    color: var(--Accent_Color);
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 3px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+
+
+
+.Return_Btn:hover {
+    background: var(--Accent_Color);
+    color: var(--Text_White);
+    box-shadow: 0 0 20px var(--Accent_Glow);
+}
+
+
+
+
+.Chat_Window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(5, 5, 5, 0.6);
+    border: 1px solid var(--Border_Gray);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+}
+
+
+
+
+.Stage_Panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: Fade_In 0.6s ease-out;
+}
+
+
+
+
+.Status_Display {
+    text-align: center;
+    max-width: 400px;
+}
+
+
+
+
+.Status_Title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    color: var(--Accent_Color);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px var(--Accent_Glow);
+}
+
+
+
+
+.Status_Text {
+    color: var(--Text_Gray);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+
+
+
+.Auth_Stage {
+    gap: 0;
+    padding: 3rem;
+    text-align: center;
+}
+
+
+
+
+.Auth_Label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    color: var(--Accent_Color);
+    display: block;
+    margin-bottom: 2rem;
+}
+
+
+
+
+.Auth_Target {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    color: var(--Text_White);
+    margin-bottom: 3rem;
+}
+
+
+
+
+.Auth_Input_Field {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+
+
+
+.Auth_Input_Field input {
+    background: #050505;
+    border: 1px solid var(--Border_Gray);
+    border-bottom: 2px solid var(--Accent_Color);
+    padding: 1.2rem 1.5rem;
+    color: white;
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    border-radius: 8px 8px 4px 4px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+
+
+
+.Auth_Input_Field input:focus {
+    background: #0a0a0a;
+    box-shadow: 0 8px 25px -10px var(--Accent_Glow);
+}
+
+
+
+
+.Verify_Btn {
+    background: var(--Accent_Color);
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+
+
+
+.Verify_Btn:hover {
+    box-shadow: 0 0 30px var(--Accent_Glow);
+    transform: translateY(-2px);
+}
+
+
+
+
+.Auth_Note {
+    margin-top: 2.5rem;
+    font-size: 0.65rem;
+    color: var(--Text_Gray);
+    opacity: 0.4;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+
+
+.Cancel_Link {
+    margin-top: 2rem;
+    background: transparent;
+    border: none;
+    color: var(--Text_Gray);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+
+
+.Cancel_Link:hover {
+    color: var(--Text_White);
+}
+
+
+
+
+.Chat_Header {
+    padding: 1.8rem 2rem;
+    border-bottom: 1px solid var(--Border_Gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+
+
+
+.Target_Info {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+
+
+
+.Target_Prefix {
+    color: var(--Accent_Color);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+
+
+#Current_Target_Display {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: var(--Text_White);
+}
+
+
+
+
+.Status_Dot {
+    width: 9px;
+    height: 9px;
+    background: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00ff00;
+    flex-shrink: 0;
+}
+
+
+
+
+.Chat_Controls {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+
+
+
+.Control_Btn {
+    background: transparent;
+    border: 1px solid var(--Border_Gray);
+    color: var(--Text_Gray);
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Control_Btn:hover {
+    border-color: var(--Accent_Color);
+    color: var(--Accent_Color);
+}
+
+
+
+
+.Guide_Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: Fade_In 0.3s ease-out;
+}
+
+
+
+
+.Guide_Content {
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    padding: 2rem;
+}
+
+
+
+
+.Guide_Title {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    color: var(--Accent_Color);
+    margin-bottom: 2.5rem;
+}
+
+
+
+
+.Guide_Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--Border_Subtle);
+    gap: 2rem;
+}
+
+
+
+
+.Guide_Item code {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--Accent_Color);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+
+
+
+.Guide_Item span {
+    color: var(--Text_Gray);
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+
+
+
+.Messages_Area {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+
+
+
+.Messages_Area::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+
+
+.Messages_Area::-webkit-scrollbar-thumb {
+    background: var(--Border_Gray);
+    border-radius: 10px;
+}
+
+
+
+
+.Message_Unit {
+    animation: Fade_In_Up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+
+.Msg_Header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+
+
+
+.Msg_Time {
+    color: var(--Text_Gray);
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+}
+
+
+
+
+.Msg_Sender {
+    color: var(--Accent_Color);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Msg_Content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--Text_White);
+    opacity: 0.9;
+}
+
+
+
+
+.Input_Area {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--Border_Gray);
+    background: rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+
+
+
+#Message_Form {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+
+#Message_Input {
+    flex: 1;
+    background: #050505;
+    border: 1px solid var(--Border_Subtle);
+    border-bottom: 2px solid var(--Border_Gray);
+    padding: 1rem 1.5rem;
+    border-radius: 8px 8px 4px 4px;
+    color: white;
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    min-width: 0;
+}
+
+
+
+
+#Message_Input:focus {
+    border-bottom-color: var(--Accent_Color);
+    background: #0a0a0a;
+    box-shadow: 0 8px 20px -10px var(--Accent_Glow);
+}
+
+
+
+
+.Send_Btn {
+    background: var(--Accent_Color);
+    color: white;
+    border: none;
+    padding: 0 2rem;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+
+
+.Send_Btn:hover {
+    box-shadow: 0 0 25px var(--Accent_Glow);
+    transform: translateY(-2px);
+}
+
+
+
+
+@keyframes Fade_In {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+@keyframes Fade_In_Up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    Body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+
+    .Chat_App_Wrapper {
+        padding: 1rem;
+        height: auto;
+        min-height: 100dvh;
+    }
+
+    .Chat_Layout {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+
+    .Sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .Sidebar_Header {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .Channel_List {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .Channel_Btn {
+        text-align: center;
+        padding: 0.9rem 0.5rem;
+    }
+
+    .Channel_Btn:nth-child(3),
+    .Channel_Btn:nth-last-child(1) {
+        grid-column: 1 / -1;
+    }
+
+    .Separator {
+        grid-column: 1 / -1;
+        margin: 0.2rem 0;
+    }
+
+    .Sidebar_Footer {
+        padding: 1rem 1.5rem;
+    }
+
+    .Chat_Window {
+        height: 75vh;
+        min-height: 500px;
+    }
+
+    .Chat_Header {
+        padding: 1.2rem 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .Messages_Area {
+        padding: 1.5rem;
+    }
+
+    .Input_Area {
+        padding: 1rem 1.2rem;
+    }
+
+    .Auth_Target {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+    }
+
+    .Auth_Stage {
+        padding: 2rem 1.5rem;
+    }
+
+}

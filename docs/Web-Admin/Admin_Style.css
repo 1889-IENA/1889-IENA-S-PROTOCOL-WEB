@@ -1,0 +1,394 @@
+/* ✠ v4.0.0 */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Primary_Dark: #0a0a0a;
+    --Accent_Color: #8b0000;
+    --Accent_Glow: rgba(139, 0, 0, 0.4);
+    --Accent_Dim: rgba(139, 0, 0, 0.12);
+    --Border_Gray: #1a1a1a;
+    --Border_Subtle: #121212;
+    --Text_White: #ffffff;
+    --Text_Gray: #a0a0a0;
+    --Input_Bg: #050505;
+}
+
+
+
+
+Body {
+    background-color: var(--Primary_Dark);
+    color: var(--Text_White);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    padding: 6rem 2rem;
+    overflow-y: auto;
+    position: relative;
+}
+
+
+
+
+Body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top left, var(--Accent_Dim) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+Body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--Accent_Dim) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+.Admin_Layout {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+.Admin_Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--Border_Gray);
+    animation: Fade_In 0.8s ease-out;
+}
+
+
+
+
+.Back_Btn {
+    background: transparent;
+    border: 1px solid var(--Accent_Color);
+    color: var(--Accent_Color);
+    padding: 0.6rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+
+.Back_Btn:hover {
+    background: var(--Accent_Color);
+    color: var(--Text_White);
+    box-shadow: 0 0 20px var(--Accent_Glow);
+    transform: translateY(-2px);
+}
+
+
+
+
+.Header_Center {
+    text-align: center;
+}
+
+
+
+
+.Page_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 6px;
+    font-size: 1.4rem;
+    color: var(--Text_White);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+.Admin_Count {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--Text_Gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+
+
+.Admin_Logo {
+    width: 42px;
+    filter: drop-shadow(0 0 16px var(--Accent_Glow));
+}
+
+
+
+
+.Admin_Dossier {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    animation: Fade_In 1s ease-out 0.2s backwards;
+}
+
+
+
+
+.Admin_Entry {
+    background-color: #050505;
+    border: 1px solid var(--Border_Gray);
+    padding: 3rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Admin_Entry::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--Accent_Color), transparent);
+    opacity: 0.5;
+}
+
+
+
+
+.Entry_Label {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--Accent_Color);
+    font-size: 0.82rem;
+    letter-spacing: 4px;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+
+.Entry_Control {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+
+
+
+.Input_Block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+
+
+
+.Control_Label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--Text_Gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+
+
+.Admin_Input {
+    background-color: var(--Input_Bg);
+    border: 1px solid var(--Border_Subtle);
+    border-bottom: 2px solid var(--Border_Gray);
+    border-radius: 8px 8px 4px 4px;
+    padding: 1.1rem;
+    color: var(--Text_White);
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    caret-color: var(--Accent_Color);
+}
+
+
+
+
+.Admin_Input:focus {
+    border-color: var(--Border_Gray);
+    border-bottom-color: var(--Accent_Color);
+    background-color: #0a0a0a;
+    box-shadow: 0 8px 20px -10px var(--Accent_Glow);
+}
+
+
+
+
+.Action_Row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+
+
+
+.Control_Btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--Accent_Color);
+    color: var(--Accent_Color);
+    padding: 1.1rem;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Control_Btn:hover {
+    background-color: var(--Accent_Color);
+    color: var(--Text_White);
+    box-shadow: 0 10px 30px var(--Accent_Glow);
+    transform: translateY(-2px);
+}
+
+
+
+
+.Control_Btn.clear {
+    border-color: var(--Text_White);
+    color: var(--Text_White);
+}
+
+
+
+
+.Control_Btn.clear:hover {
+    background-color: var(--Text_White);
+    color: var(--Primary_Dark);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+.Admin_Footer {
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0.4;
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+    color: var(--Text_Gray);
+    text-transform: uppercase;
+}
+
+
+
+
+@keyframes Fade_In {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    Body {
+        padding: 4rem 1.5rem;
+    }
+
+    .Admin_Header {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        padding-bottom: 3rem;
+        border-bottom: none;
+    }
+
+    .Admin_Header::after {
+        content: '';
+        width: 100px;
+        height: 1px;
+        background: var(--Accent_Color);
+        opacity: 0.5;
+    }
+
+    .Back_Btn {
+        width: 100%;
+        order: 3;
+    }
+
+    .Header_Center {
+        order: 1;
+    }
+
+    .Admin_Logo {
+        order: 2;
+    }
+
+    .Admin_Entry {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .Action_Row {
+        flex-direction: column;
+    }
+
+}

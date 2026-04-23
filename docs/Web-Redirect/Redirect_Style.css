@@ -1,0 +1,426 @@
+/* ✠ v4.0.0 */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Primary_Dark: #0a0a0a;
+    --Accent_Color: #8b0000;
+    --Accent_Glow: rgba(139, 0, 0, 0.4);
+    --Accent_Dim: rgba(139, 0, 0, 0.12);
+    --Border_Gray: #1a1a1a;
+    --Border_Subtle: #121212;
+    --Text_White: #ffffff;
+    --Text_Gray: #a0a0a0;
+    --Input_Bg: #0f0f0f;
+    --Hover_Bg: #121212;
+}
+
+
+
+
+Body {
+    background-color: var(--Primary_Dark);
+    color: var(--Text_White);
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+
+
+
+.App_Wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.App_Wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, var(--Accent_Dim) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+
+
+.App_Wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--Accent_Dim) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+
+
+.Sidebar {
+    width: 280px;
+    background-color: #050505;
+    border: 1px solid var(--Border_Gray);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 0;
+    margin: 1.5rem;
+    height: calc(100% - 3rem);
+    z-index: 10;
+    position: relative;
+}
+
+
+
+
+.Sidebar_Top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+}
+
+
+
+
+.Sidebar_Logo {
+    width: 35px;
+    filter: drop-shadow(0 0 16px var(--Accent_Glow));
+    transition: transform 0.5s ease;
+}
+
+
+
+
+.Sidebar_Logo:hover {
+    transform: rotate(15deg) scale(1.05);
+}
+
+
+
+
+.Sidebar_Title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+
+
+
+.Sidebar_Nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+
+
+
+.Nav_Item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 2rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--Text_Gray);
+    width: 100%;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+
+
+
+.Nav_Item:hover {
+    background-color: var(--Hover_Bg);
+    color: var(--Text_White);
+}
+
+
+
+
+.Nav_Item.Active {
+    background-color: var(--Hover_Bg);
+    color: var(--Accent_Color);
+    font-weight: 700;
+    border-right: 3px solid var(--Accent_Color);
+    text-shadow: 0 0 10px var(--Accent_Glow);
+}
+
+
+
+
+.Nav_Icon {
+    font-size: 1.2rem;
+}
+
+
+
+
+.Nav_Label {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+.Sidebar_Bottom {
+    padding: 2rem;
+    border-top: 1px solid var(--Border_Gray);
+}
+
+
+
+
+.Logout_Btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--Accent_Color);
+    color: var(--Accent_Color);
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Logout_Btn:hover {
+    background-color: var(--Accent_Color);
+    color: var(--Text_White);
+    box-shadow: 0 10px 30px var(--Accent_Glow);
+    transform: translateY(-2px);
+}
+
+
+
+
+.Main_Stage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    overflow-y: auto;
+    z-index: 10;
+    position: relative;
+}
+
+
+
+
+.Stage_Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+
+
+
+.Protocol_Version {
+    font-size: 0.7rem;
+    color: var(--Text_Gray);
+    letter-spacing: 1px;
+}
+
+
+
+
+.Stage_Content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+
+.Welcome_Card {
+    max-width: 600px;
+    animation: Fade_Up 0.8s ease-out;
+}
+
+
+
+
+.Welcome_Title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 10px;
+    margin-bottom: 1.5rem;
+    color: var(--Accent_Color);
+    text-shadow: 0 0 20px var(--Accent_Glow), 0 0 40px rgba(139, 0, 0, 0.1);
+}
+
+
+
+
+.Welcome_Text {
+    font-size: 1.1rem;
+    color: var(--Text_Gray);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+
+
+.Separator {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--Accent_Color), transparent);
+    margin: 1rem 0;
+    width: 100%;
+    opacity: 0.3;
+}
+
+
+
+
+@keyframes Fade_Up {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .App_Wrapper {
+        flex-direction: column-reverse;
+        height: auto;
+        min-height: 100dvh;
+    }
+
+    .App_Wrapper::after {
+        display: none;
+    }
+
+    .Sidebar {
+        width: calc(100% - 3rem);
+        height: auto;
+        margin: 1.5rem;
+        padding: 2.5rem 1rem;
+        align-items: center;
+    }
+
+    .Sidebar_Top {
+        margin-bottom: 2rem;
+    }
+
+    .Sidebar_Title {
+        display: none;
+    }
+
+    .Nav_Label {
+        font-size: 0.75rem;
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    .Sidebar_Nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .Nav_Item {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 0.5rem;
+        border-radius: 8px;
+        min-height: 60px;
+    }
+
+    .Nav_Item.Active {
+        border-right: none;
+        border-bottom: 3px solid var(--Accent_Color);
+    }
+
+    .Sidebar_Bottom {
+        width: 100%;
+        padding: 1.5rem 1rem 0;
+        margin-top: 1.5rem;
+        border-top: 1px solid var(--Border_Gray);
+    }
+
+    .Main_Stage {
+        padding: 3rem 2rem 1rem;
+        height: auto;
+        flex: none;
+    }
+
+    .Stage_Header {
+        justify-content: center;
+    }
+
+    .Welcome_Title {
+        font-size: 1.8rem;
+        letter-spacing: 6px;
+    }
+
+}

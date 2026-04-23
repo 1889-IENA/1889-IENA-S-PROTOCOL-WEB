@@ -1,0 +1,148 @@
+<!-- ✠ v4.0.0 -->
+
+
+
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="../Assets/Symbols/Symbol_1.png">
+
+    <title>1889 I.E.N.A SP Channels</title>
+
+    <link rel="stylesheet" href="Chat_Style.css">
+
+</head>
+
+
+
+
+<body>
+
+
+    <div class="Chat_App_Wrapper">
+
+        <div class="Chat_Layout">
+
+            <aside class="Sidebar">
+
+
+                <div class="Sidebar_Header">
+                    <img src="../Assets/Symbols/Symbol_1.png" alt="Logo" class="Mini_Logo">
+                    <span>CHANNELS</span>
+                </div>
+
+
+                <nav class="Channel_List">
+                    <button class="Channel_Btn" onclick="Select_Target('#GEREN')">#GEREN</button>
+                    <button class="Channel_Btn" onclick="Select_Target('#ERSIV')">#ERSIV</button>
+                    <button class="Channel_Btn" onclick="Select_Target('#YETZEN')">#YETZEN</button>
+                    <div class="Separator"></div>
+                    <button class="Channel_Btn" onclick="Open_DM_Panel()">DIRECT MESSAGE</button>
+                </nav>
+
+
+                <div class="Sidebar_Footer">
+                    <button class="Return_Btn" onclick="location.href='../Web-Redirect/Redirect.html'">BACK</button>
+                </div>
+
+
+            </aside>
+
+            <main class="Chat_Window">
+
+
+                <div id="Welcome_Stage" class="Stage_Panel">
+                    <div class="Status_Display">
+                        <h2 class="Status_Title">S-PROTOCOL CHANNELS</h2>
+                        <p class="Status_Text">Select channel</p>
+                    </div>
+                </div>
+
+
+                <div id="Auth_Panel" class="Stage_Panel Auth_Stage" style="display: none;">
+                    <span class="Auth_Label">SECURITY VERIFICATION</span>
+                    <p id="Auth_Channel_Name" class="Auth_Target">#CHANNEL</p>
+                    <div class="Auth_Input_Field">
+                        <input type="password" id="Channel_Password_Field" placeholder="PASSWORD" onkeydown="Handle_Auth_Key(event)">
+                        <button class="Verify_Btn" onclick="Confirm_Password()">VERIFY</button>
+                    </div>
+                    <p class="Auth_Note">Unauthorized access is strictly traced and logged</p>
+                </div>
+
+
+                <div id="DM_Panel" class="Stage_Panel Auth_Stage" style="display: none;">
+                    <span class="Auth_Label">DIRECT MESSAGE</span>
+                    <p class="Auth_Target" style="font-size: 1rem; letter-spacing: 2px;">ENTER TARGET</p>
+                    <div class="Auth_Input_Field">
+                        <input type="text" id="DM_UID_Field" placeholder="@username" onkeydown="Handle_DM_Key(event)">
+                        <button class="Verify_Btn" onclick="Confirm_DM()">CONNECT</button>
+                    </div>
+                    <button class="Cancel_Link" onclick="Cancel_To_Welcome()">CANCEL</button>
+                </div>
+
+
+                <header class="Chat_Header" id="Chat_Header" style="display: none;">
+                    <div class="Target_Info">
+                        <span class="Target_Prefix">TARGET</span>
+                        <span id="Current_Target_Display"></span>
+                        <span class="Status_Dot"></span>
+                    </div>
+                    <div class="Chat_Controls">
+                        <button class="Control_Btn" id="Guide_Btn" onclick="Toggle_Guide()">GUIDE</button>
+                        <button class="Control_Btn" id="Auto_Scroll_Btn" onclick="Toggle_Auto_Scroll()">AUTO SCROLL: ON</button>
+                    </div>
+                </header>
+
+
+                <div id="Guide_Panel" class="Guide_Overlay" style="display: none;">
+                    <div class="Guide_Content">
+                        <span class="Guide_Title">COMMAND REFERENCE</span>
+                        <div class="Guide_Item"><code>/join #CHANNEL</code><span>Switch to a channel</span></div>
+                        <div class="Guide_Item"><code>/dm @username</code><span>Open a direct message</span></div>
+                        <button class="Verify_Btn" style="margin-top: 1.5rem;" onclick="Toggle_Guide()">CLOSE</button>
+                    </div>
+                </div>
+
+
+                <div class="Messages_Area" id="Messages_Area" style="display: none;"></div>
+
+
+                <footer class="Input_Area" id="Input_Area" style="display: none;">
+                    <form id="Message_Form" autocomplete="off">
+                        <input type="text" id="Message_Input" placeholder="Enter message or /command" spellcheck="false">
+                        <button type="submit" class="Send_Btn">SEND</button>
+                    </form>
+                </footer>
+
+
+            </main>
+
+
+        </div>
+
+        
+    </div>
+
+
+    <script src="Chat_Script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,520 @@
+/* ✠ v4.0.0 */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Primary_Dark: #0a0a0a;
+    --Accent_Color: #8b0000;
+    --Accent_Glow: rgba(139, 0, 0, 0.4);
+    --Accent_Dim: rgba(139, 0, 0, 0.12);
+    --Border_Gray: #1a1a1a;
+    --Border_Subtle: #121212;
+    --Text_White: #ffffff;
+    --Text_Gray: #a0a0a0;
+    --Input_Bg: #0f0f0f;
+}
+
+
+
+
+Body {
+    background-color: var(--Primary_Dark);
+    color: var(--Text_White);
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+
+
+
+.Main_Wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.Service_Side {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #050505;
+    border-right: 1px solid var(--Border_Gray);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Service_Side::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, var(--Accent_Dim) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+
+
+
+.Carousel_Container {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+    padding: 0 2rem;
+    overflow: hidden;
+}
+
+
+
+
+.Card_Slider {
+    position: relative;
+    height: 540px;
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateX(calc(-100% * var(--current-index, 0)));
+}
+
+
+
+
+.Service_Card {
+    flex: 0 0 100%;
+    transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 100%;
+}
+
+
+
+
+.Service_Card.Active {
+    transform: scale(1.08);
+    z-index: 5;
+}
+
+
+
+
+.Card_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 12px;
+    margin-bottom: 2.5rem;
+    color: var(--Accent_Color);
+    font-size: 1.8rem;
+    text-shadow: 0 0 20px var(--Accent_Glow), 0 0 40px rgba(139, 0, 0, 0.1);
+}
+
+
+
+
+.QR_Frame {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    background: var(--Accent_Dim);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+
+
+
+.QR_Frame::before, 
+.QR_Frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: var(--Accent_Color);
+    border-style: solid;
+    opacity: 0.8;
+    border-radius: 4px;
+}
+
+
+
+
+.QR_Frame::before {
+    top: -2px;
+    left: -2px;
+    border-width: 2px 0 0 2px;
+}
+
+
+
+
+.QR_Frame::after {
+    bottom: -2px;
+    right: -2px;
+    border-width: 0 2px 2px 0;
+}
+
+
+
+
+.QR_Image {
+    width: 280px;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 30px var(--Accent_Glow));
+}
+
+
+
+
+.Slider_Controls {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+
+
+
+.Nav_Btn {
+    background: var(--Input_Bg);
+    border: 1px solid var(--Border_Gray);
+    color: var(--Text_Gray);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    transition: all 0.4s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Nav_Btn:hover {
+    color: var(--Text_White);
+    background-color: var(--Accent_Color);
+    border-color: var(--Accent_Color);
+    box-shadow: 0 0 20px var(--Accent_Glow);
+    transform: scale(1.1);
+}
+
+
+
+
+.Login_Side {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #050505;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Login_Side::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--Accent_Dim) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+
+
+.Login_Container {
+    padding: 0 4rem;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    animation: Fade_In 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+
+.Logo_Section {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+
+
+
+.Malta_Symbol {
+    width: 48px;
+    height: 48px;
+    filter: drop-shadow(0 0 16px var(--Accent_Glow));
+    flex-shrink: 0;
+    transition: transform 0.5s ease;
+}
+
+
+
+
+.Malta_Symbol:hover {
+    transform: rotate(15deg) scale(1.05);
+}
+
+
+
+
+.Login_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 6px;
+    font-size: 1.4rem;
+    color: var(--Text_White);
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+
+
+.Login_Form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+
+
+.Input_Group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+
+
+
+.Input_Label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--Text_Gray);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-left: 2px;
+}
+
+
+
+
+.Login_Input {
+    background-color: var(--Input_Bg);
+    border: 1px solid var(--Border_Subtle);
+    border-bottom: 2px solid var(--Border_Gray);
+    border-radius: 8px 8px 4px 4px;
+    padding: 0.85rem 1rem;
+    color: var(--Text_White);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+    caret-color: var(--Accent_Color);
+}
+
+
+
+
+.Login_Input:focus {
+    border-color: var(--Border_Gray);
+    border-bottom-color: var(--Accent_Color);
+    background-color: #0a0a0a;
+    box-shadow: 0 8px 20px -10px var(--Accent_Glow);
+}
+
+
+
+
+.Login_Input::placeholder {
+    color: #444;
+}
+
+
+
+
+.Separator {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--Accent_Color), transparent);
+    margin: 1rem 0;
+    width: 100%;
+    opacity: 0.3;
+}
+
+
+
+
+.Login_Button {
+    background-color: transparent;
+    color: var(--Accent_Color);
+    border: 1px solid var(--Accent_Color);
+    border-radius: 8px;
+    padding: 1.2rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Orbitron', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Login_Button:hover {
+    background-color: var(--Accent_Color);
+    color: var(--Text_White);
+    box-shadow: 0 10px 30px var(--Accent_Glow);
+    transform: translateY(-2px);
+}
+
+
+
+
+.Footer_Info {
+    margin-top: 3.5rem;
+    font-size: 0.6rem;
+    color: var(--Text_Gray);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.6;
+}
+
+
+
+
+@keyframes Fade_In {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .Main_Wrapper {
+        flex-direction: column-reverse;
+        height: auto;
+        min-height: 100dvh;
+    }
+
+    .Service_Side {
+        flex: none;
+        border-right: none;
+        border-top: 1px solid var(--Border_Gray);
+        padding: 3rem 1rem 2.5rem;
+    }
+
+    .Carousel_Container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .Card_Slider {
+        height: 380px;
+        padding: 40px 0;
+    }
+
+    .Card_Title {
+        font-size: 1.2rem;
+        letter-spacing: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .QR_Image {
+        width: 160px;
+    }
+
+    .Slider_Controls {
+        margin-top: 1.5rem;
+        gap: 2rem;
+    }
+
+    .Login_Side {
+        flex: none;
+        padding: 4rem 0 3rem;
+    }
+
+    .Login_Container {
+        padding: 0 2rem;
+        max-width: 100%;
+    }
+
+    .Logo_Section {
+        margin-bottom: 2rem;
+    }
+
+    .Login_Title {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+    }
+
+    .Footer_Info {
+        margin-top: 2rem;
+    }
+
+}

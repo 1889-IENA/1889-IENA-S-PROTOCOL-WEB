@@ -1,0 +1,160 @@
+<!-- ✠ v4.0.0 -->
+
+
+
+
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="Assets/Symbols/Symbol_1.png">
+
+    <title>1889 I.E.N.A SP Login</title>
+
+    <link rel="stylesheet" href="Login_Style.css">
+
+</head>
+
+
+
+
+<body>
+
+
+    <div class="Main_Wrapper">
+
+
+        <section class="Service_Side">
+
+            <div class="Carousel_Container">
+
+                <div class="Card_Slider" id="CardSlider">
+
+                    
+                    <div class="Service_Card Active" data-index="0">
+                        <h2 class="Card_Title">GEREN</h2>
+                        <div class="QR_Frame">
+                            <img src="Assets/QR/Geren_QR.png" alt="GEREN QR" class="QR_Image">
+                        </div>
+                    </div>
+
+
+                    <div class="Service_Card" data-index="1">
+                        <h2 class="Card_Title">ERSIV</h2>
+                        <div class="QR_Frame">
+                            <img src="Assets/QR/Ersiv_QR.png" alt="ERSIV QR" class="QR_Image">
+                        </div>
+                    </div>
+
+
+                    <div class="Service_Card" data-index="2">
+                        <h2 class="Card_Title">YETZEN</h2>
+                        <div class="QR_Frame">
+                            <img src="Assets/QR/Yetzen_QR.png" alt="YETZEN QR" class="QR_Image">
+                        </div>
+                    </div>
+
+
+                    <div class="Service_Card" data-index="3">
+                        <h2 class="Card_Title">HIGH</h2>
+                        <div class="QR_Frame">
+                            <img src="Assets/QR/High_QR.png" alt="HIGH QR" class="QR_Image">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="Slider_Controls">
+                    <button class="Nav_Btn" id="PrevBtn">B</button>
+                    <div class="Nav_Dots" id="NavDots"></div>
+                    <button class="Nav_Btn" id="NextBtn">N</button>
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <section class="Login_Side">
+
+            <main class="Login_Container">
+
+
+                <div class="Logo_Section">
+                    <img src="Assets/Symbols/Symbol_1.png" alt="1889 Logo" class="Malta_Symbol">
+                    <h1 class="Login_Title">S PROTOCOL</h1>
+                </div>
+
+
+                <form class="Login_Form" id="LoginForm">
+
+
+                    <div class="Input_Group">
+                        <label class="Input_Label">SERVER ADDRESS</label>
+                        <input type="text" class="Login_Input" spellcheck="false" autocomplete="off" id="server_host">
+                    </div>
+
+
+                    <div class="Input_Group">
+                        <label class="Input_Label">SERVER PORT</label>
+                        <input type="text" class="Login_Input" spellcheck="false" autocomplete="off" id="server_port">
+                    </div>
+
+
+                    <div class="Separator"></div>
+
+
+                    <div class="Input_Group">
+                        <label class="Input_Label">USERNAME</label>
+                        <input type="text" class="Login_Input" spellcheck="false" autocomplete="off" id="username">
+                    </div>
+
+
+                    <div class="Input_Group">
+                        <label class="Input_Label">PASSWORD</label>
+                        <input type="password" class="Login_Input" id="password">
+                    </div>
+
+
+                    <button type="submit" class="Login_Button">CONNECT</button>
+
+
+                </form>
+
+
+                <div class="Footer_Info">
+                    1889 I.E.N.A
+                </div>
+
+
+            </main>
+
+        </section>
+
+
+    </div>
+
+
+    <script src="Login_Script.js"></script>
+
+
+</body>
+
+</html>
