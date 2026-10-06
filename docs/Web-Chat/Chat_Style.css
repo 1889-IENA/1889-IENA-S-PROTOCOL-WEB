@@ -1,0 +1,760 @@
+/* v4.0.0 ✠ */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Storm_Black: #000508;
+    --Storm_Deep: #010a14;
+    --Storm_Base: #021020;
+    --Storm_Panel: #041828;
+    --Storm_Steel: #062038;
+    --Electric: #0a6aff;
+    --Steel_Blue: #1a4a8a;
+    --Chrome: #b0c4d8;
+    --Border_Dark: #0a1e30;
+    --Border_Line: #071528;
+    --Text_White: #ccdde8;
+    --Text_Gray: #4a6070;
+    --Text_Dim: #1a2a38;
+    --Input_Bg: #010c18;
+}
+
+
+
+
+Body {
+    background-color: var(--Storm_Black);
+    color: var(--Text_White);
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+Body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 106, 255, 0.04) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+Body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(10, 106, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+.Chat_App_Wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    padding: 1.5rem;
+    display: flex;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+.Chat_Layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 1.5rem;
+}
+
+
+
+
+.Sidebar {
+    width: 280px;
+    background-color: var(--Storm_Deep);
+    border: 1px solid var(--Border_Dark);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+
+
+
+.Sidebar_Header {
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 4px;
+    font-size: 0.85rem;
+    color: var(--Chrome);
+    border-bottom: 1px solid var(--Border_Dark);
+}
+
+
+
+
+.Mini_Logo {
+    width: 30px;
+    filter: brightness(0.8) sepia(0.3) hue-rotate(185deg);
+}
+
+
+
+
+.Channel_List {
+    flex: 1;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+}
+
+
+
+
+.Channel_Btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--Text_Gray);
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.72rem;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+
+
+
+.Channel_Btn:hover {
+    color: var(--Text_White);
+    background: rgba(10, 106, 255, 0.05);
+}
+
+
+
+
+.Channel_Btn.active {
+    color: var(--Chrome);
+    background: var(--Storm_Panel);
+    border-color: var(--Steel_Blue);
+}
+
+
+
+
+.Separator {
+    height: 1px;
+    background: var(--Border_Dark);
+    margin: 0.8rem 0;
+}
+
+
+
+
+.Sidebar_Footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--Border_Dark);
+}
+
+
+
+
+.Return_Btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--Steel_Blue);
+    color: var(--Chrome);
+    padding: 0.9rem;
+    border-radius: 2px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 3px;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+
+.Return_Btn:hover {
+    background: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+.Chat_Window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Storm_Deep);
+    border: 1px solid var(--Border_Dark);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    min-width: 0;
+}
+
+
+
+
+.Stage_Panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: Fade_In 0.6s ease-out;
+}
+
+
+
+
+@keyframes Fade_In {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+.Status_Display {
+    text-align: center;
+    max-width: 400px;
+}
+
+
+
+
+.Status_Title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 8px;
+    color: var(--Chrome);
+    margin-bottom: 1.5rem;
+}
+
+
+
+
+.Status_Text {
+    color: var(--Text_Gray);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+
+
+
+.Auth_Stage {
+    gap: 0;
+    padding: 3rem;
+    text-align: center;
+}
+
+
+
+
+.Auth_Label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    color: var(--Chrome);
+    display: block;
+    margin-bottom: 2rem;
+}
+
+
+
+
+.Auth_Target {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    color: var(--Text_White);
+    margin-bottom: 3rem;
+}
+
+
+
+
+.Auth_Input_Field {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 420px;
+}
+
+
+
+
+.Auth_Input_Field input {
+    background-color: var(--Input_Bg);
+    border: 1px solid var(--Border_Line);
+    border-bottom: 2px solid var(--Border_Dark);
+    padding: 1.2rem 1.5rem;
+    color: var(--Text_White);
+    text-align: center;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    border-radius: 2px 2px 0 0;
+    outline: none;
+    transition: all 0.2s ease;
+    caret-color: var(--Electric);
+}
+
+
+
+
+.Auth_Input_Field input:focus {
+    border-bottom-color: var(--Steel_Blue);
+    background-color: rgba(1, 12, 24, 0.98);
+}
+
+
+
+
+.Verify_Btn {
+    background: transparent;
+    border: 1px solid var(--Steel_Blue);
+    color: var(--Chrome);
+    padding: 1.2rem;
+    border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+
+.Verify_Btn:hover {
+    background-color: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+.Auth_Note {
+    margin-top: 2.5rem;
+    font-size: 0.65rem;
+    color: var(--Text_Gray);
+    opacity: 0.4;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+
+
+.Cancel_Link {
+    margin-top: 2rem;
+    background: transparent;
+    border: none;
+    color: var(--Text_Gray);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+
+
+
+.Cancel_Link:hover {
+    color: var(--Text_White);
+}
+
+
+
+
+.Chat_Header {
+    padding: 1.8rem 2rem;
+    border-bottom: 1px solid var(--Border_Dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+
+
+
+.Target_Info {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+
+
+
+.Target_Prefix {
+    color: var(--Text_Gray);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+
+
+#Current_Target_Display {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: var(--Text_White);
+}
+
+
+
+
+.Status_Dot {
+    width: 9px;
+    height: 9px;
+    background: #00ff00;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #00ff00;
+    flex-shrink: 0;
+}
+
+
+
+
+.Chat_Controls {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+
+
+
+.Control_Btn {
+    background: transparent;
+    border: 1px solid var(--Steel_Blue);
+    color: var(--Chrome);
+    padding: 0.55rem 1rem;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Control_Btn:hover {
+    background-color: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+.Messages_Area {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+
+
+
+.Messages_Area::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+
+
+.Messages_Area::-webkit-scrollbar-thumb {
+    background: var(--Steel_Blue);
+    border-radius: 10px;
+}
+
+
+
+
+.Message_Unit {
+    animation: Fade_In_Up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+
+@keyframes Fade_In_Up {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+.Msg_Header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+
+
+
+.Msg_Time {
+    color: var(--Text_Gray);
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+}
+
+
+
+
+.Msg_Sender {
+    color: var(--Electric);
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Msg_Content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--Text_White);
+    white-space: pre-wrap;
+    opacity: 0.9;
+}
+
+
+
+
+.Input_Area {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--Border_Dark);
+    background: rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+
+
+
+#Message_Form {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+
+#Message_Input {
+    flex: 1;
+    background-color: var(--Input_Bg);
+    border: 1px solid var(--Border_Line);
+    border-bottom: 2px solid var(--Border_Dark);
+    padding: 1rem 1.5rem;
+    border-radius: 2px 2px 0 0;
+    color: var(--Text_White);
+    outline: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    caret-color: var(--Electric);
+    min-width: 0;
+}
+
+
+
+
+#Message_Input:focus {
+    border-bottom-color: var(--Steel_Blue);
+    background-color: rgba(1, 12, 24, 0.98);
+}
+
+
+
+
+.Send_Btn {
+    background: transparent;
+    border: 1px solid var(--Steel_Blue);
+    color: var(--Chrome);
+    padding: 0 2rem;
+    border-radius: 2px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+
+
+.Send_Btn:hover {
+    background-color: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    Body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+
+    .Chat_App_Wrapper {
+        padding: 1rem;
+        height: auto;
+        min-height: 100dvh;
+    }
+
+    .Chat_Layout {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+    }
+
+    .Sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .Sidebar_Header {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .Channel_List {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .Channel_Btn {
+        text-align: center;
+        padding: 0.9rem 0.5rem;
+    }
+
+    .Channel_Btn:nth-child(3),
+    .Channel_Btn:nth-last-child(1) {
+        grid-column: 1 / -1;
+    }
+
+    .Separator {
+        grid-column: 1 / -1;
+        margin: 0.2rem 0;
+    }
+
+    .Sidebar_Footer {
+        padding: 1rem 1.5rem;
+    }
+
+    .Chat_Window {
+        height: 75vh;
+        min-height: 500px;
+    }
+
+    .Chat_Header {
+        padding: 1.2rem 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .Messages_Area {
+        padding: 1.5rem;
+    }
+
+    .Input_Area {
+        padding: 1rem 1.2rem;
+    }
+
+    .Auth_Target {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+    }
+
+    .Auth_Stage {
+        padding: 2rem 1.5rem;
+    }
+
+}

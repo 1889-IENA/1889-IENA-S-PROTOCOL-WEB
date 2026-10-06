@@ -1,0 +1,369 @@
+/* v4.0.0 ✠ */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Storm_Black: #000508;
+    --Storm_Deep: #010a14;
+    --Storm_Base: #021020;
+    --Storm_Panel: #041828;
+    --Storm_Steel: #062038;
+    --Electric: #0a6aff;
+    --Steel_Blue: #1a4a8a;
+    --Chrome: #b0c4d8;
+    --Border_Dark: #0a1e30;
+    --Border_Line: #071528;
+    --Text_White: #ccdde8;
+    --Text_Gray: #4a6070;
+    --Text_Dim: #1a2a38;
+    --Input_Bg: #010c18;
+}
+
+
+
+
+Body {
+    background-color: var(--Storm_Black);
+    color: var(--Text_White);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    padding: 6rem 2rem;
+    overflow-y: auto;
+    position: relative;
+}
+
+
+
+
+Body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 106, 255, 0.04) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+Body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(10, 106, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+.Mission_Layout {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+.Mission_Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--Border_Dark);
+    animation: Fade_In 0.8s ease-out;
+}
+
+
+
+
+@keyframes Fade_In {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+.Back_Btn {
+    background: transparent;
+    border: 1px solid var(--Steel_Blue);
+    color: var(--Chrome);
+    padding: 0.6rem 1.8rem;
+    border-radius: 2px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+
+.Back_Btn:hover {
+    background: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+.Header_Center {
+    text-align: center;
+}
+
+
+
+
+.Page_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 6px;
+    font-size: 1.4rem;
+    color: var(--Text_White);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+
+
+
+.Mission_Count {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--Text_Gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+
+
+.Mission_Logo {
+    width: 42px;
+    filter: brightness(0.8) sepia(0.3) hue-rotate(185deg);
+}
+
+
+
+
+.Mission_Dossier {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    animation: Fade_In 1s ease-out 0.2s backwards;
+}
+
+
+
+
+.Mission_Entry {
+    background-color: var(--Storm_Deep);
+    border: 1px solid var(--Border_Dark);
+    padding: 3rem;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+
+
+
+.Mission_Entry:hover {
+    transform: translateY(-4px);
+    border-color: var(--Steel_Blue);
+}
+
+
+
+
+.Entry_Class {
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--Chrome);
+    opacity: 0.8;
+}
+
+
+
+
+.Entry_Data {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+
+
+.Field_Item {
+    display: flex;
+    gap: 2.5rem;
+    border-bottom: 1px solid var(--Border_Line);
+    padding-bottom: 1rem;
+}
+
+
+
+
+.Field_Key {
+    width: 110px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--Text_Gray);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+.Field_Value {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--Text_White);
+    font-weight: 500;
+}
+
+
+
+
+.Field_Value.bold_white {
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: var(--Text_White);
+}
+
+
+
+
+.Earn_Text {
+    color: #4aff8a;
+    font-weight: 700;
+}
+
+
+
+
+.Info_Text {
+    line-height: 1.7;
+    color: var(--Text_Gray);
+    font-style: normal;
+    font-size: 0.92rem;
+}
+
+
+
+
+.Mission_Footer {
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0.4;
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+    color: var(--Text_Gray);
+    text-transform: uppercase;
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    Body {
+        padding: 4rem 1.5rem;
+    }
+
+    .Mission_Header {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        padding-bottom: 3rem;
+        border-bottom: none;
+    }
+
+    .Mission_Header::after {
+        content: '';
+        width: 100px;
+        height: 1px;
+        background: var(--Steel_Blue);
+        opacity: 0.5;
+    }
+
+    .Back_Btn {
+        width: 100%;
+        order: 3;
+    }
+
+    .Header_Center {
+        order: 1;
+    }
+
+    .Mission_Logo {
+        order: 2;
+    }
+
+    .Mission_Entry {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .Field_Item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .Field_Key {
+        width: 100%;
+    }
+
+    .Entry_Class {
+        position: static;
+        margin-bottom: 2rem;
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        background: var(--Storm_Panel);
+        border-radius: 2px;
+    }
+
+}

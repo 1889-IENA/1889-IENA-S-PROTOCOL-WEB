@@ -1,0 +1,530 @@
+/* v4.0.0 ✠ */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Storm_Black: #000508;
+    --Storm_Deep: #010a14;
+    --Storm_Base: #021020;
+    --Storm_Panel: #041828;
+    --Storm_Steel: #062038;
+    --Electric: #0a6aff;
+    --Steel_Blue: #1a4a8a;
+    --Chrome: #b0c4d8;
+    --Border_Dark: #0a1e30;
+    --Border_Line: #071528;
+    --Text_White: #ccdde8;
+    --Text_Gray: #4a6070;
+    --Text_Dim: #1a2a38;
+    --Input_Bg: #010c18;
+}
+
+
+
+
+Body {
+    background-color: var(--Storm_Black);
+    color: var(--Text_White);
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+
+
+
+.Main_Wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.Service_Side {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Storm_Deep);
+    border-right: 1px solid var(--Border_Dark);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Service_Side::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 106, 255, 0.04) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+
+
+
+.Carousel_Container {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+    padding: 0 2rem;
+    overflow: hidden;
+}
+
+
+
+
+.Card_Slider {
+    position: relative;
+    height: 540px;
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateX(calc(-100% * var(--current-index, 0)));
+}
+
+
+
+
+.Service_Card {
+    flex: 0 0 100%;
+    transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 100%;
+}
+
+
+
+
+.Service_Card.Active {
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+
+
+
+.Card_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 14px;
+    margin-bottom: 2.5rem;
+    color: var(--Chrome);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+
+
+
+.QR_Frame {
+    display: inline-block;
+    position: relative;
+    padding: 10px;
+    background: rgba(10, 106, 255, 0.04);
+    border-radius: 2px;
+    border: 1px solid var(--Border_Dark);
+}
+
+
+
+
+.QR_Frame::before,
+.QR_Frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: var(--Steel_Blue);
+    border-style: solid;
+    opacity: 0.9;
+}
+
+
+
+
+.QR_Frame::before {
+    top: -2px;
+    left: -2px;
+    border-width: 2px 0 0 2px;
+}
+
+
+
+
+.QR_Frame::after {
+    bottom: -2px;
+    right: -2px;
+    border-width: 0 2px 2px 0;
+}
+
+
+
+
+.QR_Image {
+    width: 280px;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    filter: brightness(0.88) saturate(0.7);
+}
+
+
+
+
+.Slider_Controls {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+
+
+
+.Nav_Btn {
+    background: var(--Storm_Panel);
+    border: 1px solid var(--Border_Dark);
+    color: var(--Text_Gray);
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Nav_Btn:hover {
+    color: var(--Chrome);
+    background-color: var(--Storm_Steel);
+    border-color: var(--Steel_Blue);
+}
+
+
+
+
+.Login_Side {
+    flex: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Storm_Black);
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Login_Side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--Steel_Blue), transparent);
+    opacity: 0.4;
+}
+
+
+
+
+.Login_Container {
+    padding: 0 4rem;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    animation: Fade_In 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+
+
+.Logo_Section {
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+
+
+
+.Malta_Symbol {
+    width: 48px;
+    height: 48px;
+    filter: brightness(0.8) sepia(0.3) hue-rotate(185deg);
+    flex-shrink: 0;
+    transition: transform 0.5s ease;
+}
+
+
+
+
+.Malta_Symbol:hover {
+    transform: rotate(12deg) scale(1.05);
+}
+
+
+
+
+.Login_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 7px;
+    font-size: 1.35rem;
+    color: var(--Text_White);
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+
+
+.Login_Form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+
+
+.Input_Group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+
+
+
+.Input_Label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--Text_Gray);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-left: 2px;
+    transition: color 0.2s ease;
+}
+
+
+
+
+.Input_Group:focus-within .Input_Label {
+    color: var(--Chrome);
+}
+
+
+
+
+.Login_Input {
+    background-color: var(--Input_Bg);
+    border: 1px solid var(--Border_Line);
+    border-bottom: 2px solid var(--Border_Dark);
+    border-radius: 2px 2px 0 0;
+    padding: 0.88rem 1rem;
+    color: var(--Text_White);
+    font-size: 0.92rem;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    caret-color: var(--Electric);
+    letter-spacing: 0.4px;
+}
+
+
+
+
+.Login_Input:focus {
+    border-color: var(--Border_Dark);
+    border-bottom-color: var(--Steel_Blue);
+    background-color: rgba(1, 12, 24, 0.98);
+}
+
+
+
+
+.Login_Input::placeholder {
+    color: var(--Text_Dim);
+}
+
+
+
+
+.Separator {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--Steel_Blue), transparent);
+    margin: 0.8rem 0;
+    width: 100%;
+    opacity: 0.4;
+}
+
+
+
+
+.Login_Button {
+    background-color: transparent;
+    color: var(--Chrome);
+    border: 1px solid var(--Steel_Blue);
+    border-radius: 2px;
+    padding: 1.15rem;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 6px;
+    cursor: pointer;
+    margin-top: 0.8rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+
+
+.Login_Button:hover {
+    background-color: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+.Footer_Info {
+    margin-top: 3.5rem;
+    font-size: 0.58rem;
+    color: var(--Text_Gray);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.5;
+}
+
+
+
+
+@keyframes Fade_In {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .Main_Wrapper {
+        flex-direction: column-reverse;
+        height: auto;
+        min-height: 100dvh;
+    }
+
+    .Service_Side {
+        flex: none;
+        border-right: none;
+        border-top: 1px solid var(--Border_Dark);
+        padding: 3rem 1rem 2.5rem;
+    }
+
+    .Carousel_Container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .Card_Slider {
+        height: 380px;
+        padding: 40px 0;
+    }
+
+    .Card_Title {
+        font-size: 1.2rem;
+        letter-spacing: 9px;
+        margin-bottom: 1.5rem;
+    }
+
+    .QR_Image {
+        width: 155px;
+    }
+
+    .Slider_Controls {
+        margin-top: 1.5rem;
+        gap: 2rem;
+    }
+
+    .Login_Side {
+        flex: none;
+        padding: 4rem 0 3rem;
+    }
+
+    .Login_Container {
+        padding: 0 2rem;
+        max-width: 100%;
+    }
+
+    .Logo_Section {
+        margin-bottom: 2rem;
+    }
+
+    .Login_Title {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+    }
+
+    .Footer_Info {
+        margin-top: 2rem;
+    }
+
+}

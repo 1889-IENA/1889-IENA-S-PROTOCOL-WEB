@@ -1,0 +1,402 @@
+/* v4.0.0 ✠ */
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+input, button, select, textarea {
+    font-family: inherit;
+}
+
+
+
+
+:Root {
+    --Storm_Black: #000508;
+    --Storm_Deep: #010a14;
+    --Storm_Base: #021020;
+    --Storm_Panel: #041828;
+    --Storm_Steel: #062038;
+    --Electric: #0a6aff;
+    --Steel_Blue: #1a4a8a;
+    --Chrome: #b0c4d8;
+    --Border_Dark: #0a1e30;
+    --Border_Line: #071528;
+    --Text_White: #ccdde8;
+    --Text_Gray: #4a6070;
+    --Text_Dim: #1a2a38;
+    --Input_Bg: #010c18;
+}
+
+
+
+
+Body {
+    background-color: var(--Storm_Black);
+    color: var(--Text_White);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    padding: 6rem 2rem;
+    overflow-y: auto;
+    position: relative;
+}
+
+
+
+
+Body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 106, 255, 0.04) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+Body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(10, 106, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+
+
+.Profile_Layout {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+.Profile_Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--Border_Dark);
+    animation: Fade_In 0.8s ease-out;
+}
+
+
+
+
+
+
+.Back_Btn {
+    background: transparent;
+    border: 1px solid var(--Steel_Blue);
+    color: var(--Chrome);
+    padding: 0.6rem 1.8rem;
+    border-radius: 2px;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+
+
+.Back_Btn:hover {
+    background: var(--Steel_Blue);
+    color: var(--Text_White);
+    border-color: var(--Electric);
+}
+
+
+
+
+.Page_Title {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 6px;
+    font-size: 1.4rem;
+    color: var(--Text_White);
+    font-weight: 700;
+}
+
+
+
+
+.Profile_Logo {
+    width: 42px;
+    filter: brightness(0.8) sepia(0.3) hue-rotate(185deg);
+}
+
+
+
+
+.Profile_Grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    animation: Fade_In 1s ease-out 0.2s backwards;
+}
+
+
+
+
+.Info_Card, .Permissions_Card, .Bio_Card {
+    background-color: var(--Storm_Deep);
+    border: 1px solid var(--Border_Dark);
+    padding: 3rem;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.Info_Card::before, .Permissions_Card::before, .Bio_Card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--Steel_Blue), transparent);
+    opacity: 0.5;
+}
+
+
+
+
+.Card_Label {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--Chrome);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+
+.Data_List {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+
+
+
+.Data_Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--Border_Line);
+    padding-bottom: 1.2rem;
+}
+
+
+
+
+.Item_Key {
+    color: var(--Text_Gray);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+
+
+.Item_Value {
+    font-weight: 600;
+    color: var(--Text_White);
+    font-size: 1rem;
+}
+
+
+
+
+.Permissions_Table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+
+
+
+.Permissions_Table th {
+    padding: 1.2rem 0;
+    font-size: 0.7rem;
+    color: var(--Text_Gray);
+    letter-spacing: 3px;
+    border-bottom: 1px solid var(--Border_Dark);
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+
+
+
+.Permissions_Table td {
+    padding: 1.8rem 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--Border_Line);
+}
+
+
+
+
+.Perm_Type {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--Text_White);
+}
+
+
+
+
+.Status_Badge {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+
+
+
+.Status_Badge.granted {
+    background: rgba(10, 106, 255, 0.05);
+    color: var(--Electric);
+    border: 1px solid rgba(10, 106, 255, 0.2);
+}
+
+
+
+
+.Status_Badge.denied {
+    background: rgba(255, 26, 26, 0.05);
+    color: #ff1a1a;
+    border: 1px solid rgba(255, 26, 26, 0.2);
+}
+
+
+
+
+.Bio_Text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--Text_Gray);
+    font-style: italic;
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+
+
+
+.Profile_Footer {
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0.4;
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    color: var(--Text_Gray);
+    text-transform: uppercase;
+}
+
+
+
+
+@keyframes Fade_In {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+
+@media (max-width: 900px) {
+
+    Body {
+        padding: 4rem 1.5rem;
+    }
+
+    .Profile_Header {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        padding-bottom: 3rem;
+        border-bottom: none;
+    }
+
+    .Profile_Header::after {
+        content: '';
+        width: 100px;
+        height: 1px;
+        background: var(--Steel_Blue);
+        opacity: 0.5;
+    }
+
+    .Back_Btn {
+        width: 100%;
+        order: 3;
+    }
+
+    .Page_Title {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+        order: 1;
+    }
+
+    .Profile_Logo {
+        order: 2;
+    }
+
+    .Info_Card, .Permissions_Card, .Bio_Card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .Data_Item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .Item_Value {
+        font-size: 0.9rem;
+    }
+
+}
